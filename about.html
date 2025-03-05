@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">✨ Violin ✨</div>
+            <div class="nav-links">
+                <a href="https://violetz12.github.io/Partner-Portfolio">Home</a>
+                <a href="about">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <canvas id="heroCanvas"></canvas>
+        <h1 class="animate__animated animate__fadeInDown">About Daily Dose of Music</h1>
+        <p class="animate__animated animate__fadeIn animate__delay-1s">Listening to songs together ✨</p>
+        <br />
+        <button class="cta-button animate__animated animate__bounceIn animate__delay-2s"> Join now!</button>
+    </section>
+
+    <section class="about">
+        <div class="about-content">
+            <h2 class="animate__animated animate__fadeInUp">Introduction</h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">
+                We want to create a beautiful and unique website that has music playing functionalities.
+                Its UI/UX mainly feature retro-themed pixel art and “game” controls, inspired by Codedex.
+            </p>
+            <div class="about-features animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="feature-card">
+                    <h3>🎵 Profile</h3>
+                    <p>Lets users customize their account and track listening stats
+                        (e.g how long you have been listening to an artist)
+                </div>
+                <div class="feature-card">
+                    <h3>💫Recommended songs</h3>
+                    <p>Suggest tracks based on the user’s listening habits
+                        and favorite genres, helping discover new music.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌐 Downloaded songs</h3>
+                    <p>Allow offline access to saved tracks, ideal for uninterrupted listening anywhere.</p>
+                </div>
+            </div>
+            <button class="cta-button animate__animated animate__bounceIn animate__delay-3s">Learn More</button>
+        </div>
+    </section>
+    <script>
+        // Add sparkle effect
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.transform = 'scale(0)';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 2000);
+        }
+
+        setInterval(createSparkle, 500);
+
+        // Create floating shapes
+        function createFloatingShapes() {
+            const shapes = 15;
+            const container = document.createElement('div');
+            container.className = 'floating-shapes';
+            
+            for (let i = 0; i < shapes; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'shape';
+                shape.style.width = Math.random() * 100 + 50 + 'px';
+                shape.style.height = shape.style.width;
+                shape.style.left = Math.random() * 100 + '%';
+                shape.style.top = Math.random() * 100 + '%';
+                shape.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(shape);
+            }
+            
+            document.querySelector('.hero').appendChild(container);
+        }
+
+        createFloatingShapes();
+
+        // Animate numbers on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.achievements'));
+
+        animate();
+    </script>
+</body>
+</html>
